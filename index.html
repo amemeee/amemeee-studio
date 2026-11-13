@@ -7,56 +7,67 @@
   <title>Studio Amemeee | Websites for people who'd rather not talk</title>
   <meta name="description" content="Fixed-price landing pages and digital wedding cards for small businesses in Malaysia. See the price first, then WhatsApp us.">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <!-- Set the saved/system theme before first paint so there is no white flash in dark mode -->
+  <script>try{var t=localStorage.getItem("theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.dataset.theme=t}catch(e){}</script>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <nav class="nav">
     <a class="brand" href="#hero" data-bind="studioName">Studio Amemeee</a>
-    <a class="nav-cta" data-wa href="#">WhatsApp</a>
+    <div class="nav-right">
+      <div class="seg" role="group" data-i18n-aria="langLabel" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="ms" aria-pressed="false">BM</button>
+      </div>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch to dark mode">☾</button>
+      <a class="nav-cta" data-wa href="#" data-i18n="navCta">WhatsApp</a>
+    </div>
   </nav>
 
   <!-- ── Section 1: the duo ── -->
-  <section class="hero" id="hero" aria-label="Studio introduction">
+  <section class="hero" id="hero" aria-label="Studio introduction" data-i18n-aria="heroAria">
     <div class="hero-head">
-      <h1>Websites for people who'd rather not&nbsp;talk.</h1>
-      <a class="btn main" data-wa href="#">Chat on WhatsApp</a>
+      <h1 data-i18n="heroTitle">Websites for people who'd rather not&nbsp;talk.</h1>
+      <a class="btn main" data-wa href="#" data-i18n="chat">Chat on WhatsApp</a>
     </div>
 
     <div class="stage">
       <!-- Girl: talks and sells -->
       <div class="fig girl-fig">
-        <img src="assets/girl.jpg" alt="Manga girl mascot, the friendly guide" width="480" height="800" decoding="async">
+        <img class="img-light" src="assets/girl.jpg" alt="Manga girl mascot, the friendly guide" data-i18n-alt="girlAlt" width="480" height="800" decoding="async">
+        <img class="img-dark" src="assets/girl-dark.png" alt="Manga girl mascot, the friendly guide" data-i18n-alt="girlAlt" width="480" height="800" decoding="async" loading="lazy">
       </div>
       <div class="bubble" id="bubble">
         <p class="bubble-text" id="bubbleText" aria-hidden="true"></p>
         <p class="sr-only" id="bubbleLive" aria-live="polite"></p>
-        <div class="bubble-choices" id="choices" role="group" aria-label="Pick a package"></div>
+        <div class="bubble-choices" id="choices" role="group" aria-label="Pick a package" data-i18n-aria="pickPkg"></div>
       </div>
 
       <!-- Boy: quiet sidekick, click him -->
       <div class="fig boy-fig">
-        <button class="boy" id="boy" type="button" aria-label="Poke the quiet boy">
-          <img src="assets/boy.jpg" alt="Manga boy mascot with a bandage on his cheek, the quiet sidekick" width="480" height="800" decoding="async">
+        <button class="boy" id="boy" type="button" aria-label="Poke the quiet boy" data-i18n-aria="boyAria">
+          <img class="img-light" src="assets/boy.jpg" alt="Manga boy mascot with a bandage on his cheek, the quiet sidekick" data-i18n-alt="boyAlt" width="480" height="800" decoding="async">
+          <img class="img-dark" src="assets/boy-dark.png" alt="Manga boy mascot with a bandage on his cheek, the quiet sidekick" data-i18n-alt="boyAlt" width="480" height="800" decoding="async" loading="lazy">
         </button>
       </div>
       <p class="bubble boy-bubble" id="boyBubble" aria-hidden="true"></p>
     </div>
 
-    <a class="scroll-cue" href="#packages">scroll for prices <span aria-hidden="true">↓</span></a>
+    <a class="scroll-cue" href="#packages"><span data-i18n="scroll">scroll for prices</span> <span aria-hidden="true">↓</span></a>
   </section>
 
   <main id="main">
     <!-- ── Section 2: packages ── -->
     <section class="block" id="packages" aria-labelledby="pkgTitle">
       <header class="block-head">
-        <h2 id="pkgTitle">Prices</h2>
+        <h2 id="pkgTitle" data-i18n="prices">Prices</h2>
       </header>
 
       <div class="pkg-grid">
         <fieldset class="pkg-options">
-          <legend>What do you need?</legend>
+          <legend data-i18n="whatNeed">What do you need?</legend>
           <div class="opts" id="opts"></div>
-          <p class="hint">Not sure which one? Ask on WhatsApp.</p>
+          <p class="hint" data-i18n="hint">Not sure which one? Ask on WhatsApp.</p>
         </fieldset>
 
         <aside class="summary" aria-live="polite">
@@ -64,7 +75,7 @@
           <p class="price" id="price"></p>
           <p class="time" id="time"></p>
           <ul class="includes" id="includes"></ul>
-          <a class="btn main wide" id="packageCta" data-wa href="#">WhatsApp about this</a>
+          <a class="btn main wide" id="packageCta" data-wa href="#" data-i18n="waAbout">WhatsApp about this</a>
         </aside>
       </div>
     </section>
@@ -72,7 +83,7 @@
     <!-- ── Section 3: demos ── -->
     <section class="block" id="demos" aria-labelledby="demoTitle">
       <header class="block-head">
-        <h2 id="demoTitle">Demos</h2>
+        <h2 id="demoTitle" data-i18n="demos">Demos</h2>
       </header>
       <div class="cards" id="demoList"></div>
     </section>
@@ -80,25 +91,25 @@
     <!-- ── Section 4: process ── -->
     <section class="block" id="process" aria-labelledby="procTitle">
       <header class="block-head">
-        <h2 id="procTitle">How it works</h2>
+        <h2 id="procTitle" data-i18n="how">How it works</h2>
       </header>
       <ol class="steps">
-        <li><h3>You WhatsApp us.</h3><p>Say what you need. A few words is enough.</p></li>
-        <li><h3>We send a preview.</h3><p>You send your details and photos. We send a link to look at.</p></li>
-        <li><h3>You say yes. It goes live.</h3><p>Change anything you don't like first.</p></li>
+        <li><h3 data-i18n="step1h">You WhatsApp us.</h3><p data-i18n="step1p">Say what you need. A few words is enough.</p></li>
+        <li><h3 data-i18n="step2h">We send a preview.</h3><p data-i18n="step2p">You send your details and photos. We send a link to look at.</p></li>
+        <li><h3 data-i18n="step3h">You say yes. It goes live.</h3><p data-i18n="step3p">Change anything you don't like first.</p></li>
       </ol>
     </section>
 
     <!-- ── Final CTA ── -->
     <section class="final" aria-labelledby="finalTitle">
-      <h2 id="finalTitle">Typing is easier than talking.</h2>
-      <a class="btn main" data-wa href="#">Chat on WhatsApp</a>
-      <p class="backup">or email <a data-email href="#"></a></p>
+      <h2 id="finalTitle" data-i18n="finalH">Typing is easier than talking.</h2>
+      <a class="btn main" data-wa href="#" data-i18n="chat">Chat on WhatsApp</a>
+      <p class="backup"><span data-i18n="orEmail">or email</span> <a data-email href="#"></a></p>
     </section>
   </main>
 
   <footer class="footer">
-    <p>© <span id="year"></span> <span data-bind="studioName">Studio Amemeee</span> · Selangor, Malaysia</p>
+    <p>© <span id="year"></span> <span data-bind="studioName">Studio Amemeee</span> · <span data-i18n="location">Selangor, Malaysia</span></p>
   </footer>
 
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
